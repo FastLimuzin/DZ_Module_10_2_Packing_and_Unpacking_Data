@@ -1,7 +1,7 @@
 import json
 import pickle
 
-# Задание 1: Класс "Автомобиль"
+# Задание 1
 class Car:
     def __init__(self, brand, model, year):
         self.brand = brand
@@ -14,7 +14,7 @@ class Car:
     def stop(self):
         return f"{self.brand} {self.model} остановился."
 
-    # Упаковка и распаковка с использованием pickle
+    # pickle
     def save_pickle(self, filename):
         with open(filename, 'wb') as file:
             pickle.dump(self, file)
@@ -24,7 +24,7 @@ class Car:
         with open(filename, 'rb') as file:
             return pickle.load(file)
 
-    # Упаковка и распаковка с использованием json
+    # json
     def save_json(self, filename):
         with open(filename, 'w') as file:
             json.dump(self.__dict__, file)
@@ -36,7 +36,7 @@ class Car:
         return Car(**data)
 
 
-# Задание 2: Класс "Книга"
+# Задание 2:
 class Book:
     def __init__(self, title, author, year):
         self.title = title
@@ -49,7 +49,7 @@ class Book:
     def get_info(self):
         return f"'{self.title}', {self.author}, {self.year} год."
 
-    # Упаковка и распаковка с использованием pickle
+   
     def save_pickle(self, filename):
         with open(filename, 'wb') as file:
             pickle.dump(self, file)
@@ -59,7 +59,7 @@ class Book:
         with open(filename, 'rb') as file:
             return pickle.load(file)
 
-    # Упаковка и распаковка с использованием json через Encoder
+    # json через Encoder
     def save_json(self, filename):
         with open(filename, 'w') as file:
             json.dump(self, file, cls=BookEncoder)
@@ -77,7 +77,7 @@ class BookEncoder(json.JSONEncoder):
         return super().default(obj)
 
 
-# Задание 3: Класс "Стадион"
+# Задание 3
 class Stadium:
     def __init__(self, name, location, capacity):
         self.name = name
@@ -90,7 +90,7 @@ class Stadium:
     def close(self):
         return f"Стадион '{self.name}' закрыт."
 
-    # Упаковка и распаковка с использованием pickle
+   
     def save_pickle(self, filename):
         with open(filename, 'wb') as file:
             pickle.dump(self, file)
@@ -100,7 +100,7 @@ class Stadium:
         with open(filename, 'rb') as file:
             return pickle.load(file)
 
-    # Упаковка и распаковка с использованием json через Adapter
+    #json через Adapter
     def save_json(self, filename):
         with open(filename, 'w') as file:
             json.dump(StadiumAdapter.to_dict(self), file)
@@ -123,7 +123,6 @@ class StadiumAdapter:
         raise TypeError("Object is not of type 'Stadium'")
 
 
-# Примеры использования
 if __name__ == "__main__":
     # Car
     car = Car("Ford", "explorer", 2013)
